@@ -37,9 +37,9 @@ env:
 
 on:
   push:
-    branches: [main]
+    branches: [main, master]
     paths:
-      - 'Unicorns/**'                   # EDIT: match your app directory
+      - 'Unicorns/**'
       - '.github/workflows/**'
   workflow_dispatch:
     inputs:
@@ -108,6 +108,12 @@ jobs:
           mkdir -p ~/private_keys
           echo "$ASC_KEY_P8" | base64 --decode > ~/private_keys/AuthKey_${ASC_KEY_ID}.p8
           echo "ASC API key installed: AuthKey_${ASC_KEY_ID}.p8"
+
+      - name: Bump Build Number
+        run: |
+          PLIST="Unicorns/Unicorns/Resources/Info.plist"
+          /usr/libexec/PlistBuddy -c "Set :CFBundleVersion ${{ github.run_number }}" "$PLIST"
+          echo "CFBundleVersion set to ${{ github.run_number }}"
 
       - name: Build & Archive
         env:
@@ -202,7 +208,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     if: |
-      (github.event_name == 'push' && github.ref == 'refs/heads/main') ||
+      (github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')) ||
       (github.event_name == 'workflow_dispatch' && inputs.deploy == 'true')
 
     steps:
