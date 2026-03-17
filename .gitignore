@@ -1,0 +1,9 @@
+.DS_Store
+*.xcworkspace/xcuserdata/
+build/
+DerivedData/
+.deploys/
+config.json
+*.p12
+*.p8
+*.pem
