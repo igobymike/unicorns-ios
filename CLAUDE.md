@@ -8,12 +8,11 @@ This app was built with [ios-deploy-kit](https://github.com/igobymike/ios-deploy
 
 ## Mandatory Reading
 
-Before doing any work, read the full agent guide:
+Before doing any work, read these files in order:
 ```bash
-cat ~/ios-deploy-kit/AGENT.md
+cat ~/ios-deploy-kit/AGENT.md        # Generic rules and architecture
+cat ~/ios-deploy-kit/OPERATOR.md     # Server credentials and URLs (if exists)
 ```
-
-That file has the complete rules, architecture diagram, build error fixes, and credential references. Everything below is a summary.
 
 ---
 
@@ -27,10 +26,9 @@ That file has the complete rules, architecture diagram, build error fixes, and c
      --source-root Unicorns/Unicorns \
      --scan
    ```
-3. **Use Tailscale** (`100.71.157.108`) for server communication. Do NOT create Cloudflare tunnel routes.
-4. **All apps share ONE deploy webhook** at `marcus.baiteks.com/api/deploy` (port 9879). Do NOT create new webhook instances.
-5. **OTA files go in `~/marcus-ios/.deploys/ota/`** — the webhook auto-serves them.
-6. **Do NOT add App Groups or Share Extensions** in the initial build (requires Apple portal registration first).
+3. **Use Tailscale** for server communication. Do NOT create Cloudflare tunnel routes.
+4. **All apps share ONE deploy webhook.** Do NOT create new webhook instances.
+5. **Do NOT add App Groups or Share Extensions** in the initial build (requires Apple portal registration first).
 
 ## SwiftUI Gotchas
 
@@ -44,7 +42,6 @@ That file has the complete rules, architecture diagram, build error fixes, and c
 | App Name | Unicorns |
 | Bundle ID | com.baiteks.Unicorns |
 | GitHub Repo | igobymike/unicorns-ios |
-| Install URL | `https://marcus.baiteks.com/api/deploy/unicorns-install` |
 
 ## Workflow: Adding Code
 
@@ -53,13 +50,11 @@ That file has the complete rules, architecture diagram, build error fixes, and c
 3. Commit and push to `main`
 4. GitHub Actions builds and signs the IPA
 5. Webhook stages OTA files and sends push notification
-6. Download artifact and stage: `gh run download <RUN_ID> --repo igobymike/unicorns-ios`
-7. Copy IPA to `~/marcus-ios/.deploys/ota/Unicorns.ipa`
-8. Verify: `curl -s -o /dev/null -w "%{http_code}" https://marcus.baiteks.com/api/deploy/unicorns-install`
+6. Download artifact, copy IPA to OTA directory (see OPERATOR.md for paths)
 
 ## Full Reference
 
-All credentials, existing apps, error fixes, and architecture details are in:
 ```bash
-cat ~/ios-deploy-kit/AGENT.md
+cat ~/ios-deploy-kit/AGENT.md        # Rules, architecture, error fixes
+cat ~/ios-deploy-kit/OPERATOR.md     # Your server credentials and URLs
 ```
