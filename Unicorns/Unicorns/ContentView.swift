@@ -79,7 +79,7 @@ struct UnicornStats {
 }
 
 struct Unicorn: Identifiable {
-    let id = UUID()
+    let id: String
     let name: String
     let title: String
     let color: Color
@@ -90,76 +90,80 @@ struct Unicorn: Identifiable {
     let ability: String
 }
 
+func unicornByID(_ id: String) -> Unicorn? {
+    allUnicorns.first { $0.id == id }
+}
+
 // MARK: - Unicorn Database
 
 let allUnicorns: [Unicorn] = [
-    Unicorn(name: "Sparkle", title: "The Radiant", color: .purple,
+    Unicorn(id: "sparkle", name: "Sparkle", title: "The Radiant", color: .purple,
             element: .cosmic, rarity: .legendary,
             stats: UnicornStats(power: 0.9, speed: 0.7, magic: 1.0, defense: 0.6),
             lore: "Born from the collision of two galaxies, Sparkle carries the light of a thousand suns within her crystalline horn. Ancient texts speak of her ability to weave reality itself.",
             ability: "Nova Burst — unleashes concentrated starlight that can reshape the fabric of space"),
 
-    Unicorn(name: "Stardust", title: "Night Rider", color: .pink,
+    Unicorn(id: "stardust", name: "Stardust", title: "Night Rider", color: .pink,
             element: .cosmic, rarity: .epic,
             stats: UnicornStats(power: 0.6, speed: 0.95, magic: 0.8, defense: 0.5),
             lore: "Stardust gallops across the Milky Way each night, leaving trails of shimmering cosmic dust. She is the reason shooting stars exist — each one a hoofprint left in the sky.",
             ability: "Comet Dash — achieves light speed, leaving a trail of wishes in her wake"),
 
-    Unicorn(name: "Moonbeam", title: "Wish Granter", color: .blue,
+    Unicorn(id: "moonbeam", name: "Moonbeam", title: "Wish Granter", color: .blue,
             element: .light, rarity: .legendary,
             stats: UnicornStats(power: 0.7, speed: 0.6, magic: 0.95, defense: 0.8),
             lore: "When the moon is full, Moonbeam descends from the lunar plains to walk among dreamers. Every wish made at midnight passes through her horn before reaching the stars.",
             ability: "Lunar Grace — channels moonlight into pure wish energy that alters fate"),
 
-    Unicorn(name: "Crystal", title: "The Frozen Monarch", color: .cyan,
+    Unicorn(id: "crystal", name: "Crystal", title: "The Frozen Monarch", color: .cyan,
             element: .ice, rarity: .epic,
             stats: UnicornStats(power: 0.8, speed: 0.5, magic: 0.85, defense: 0.95),
             lore: "Crystal rules the Ice Palace at the top of the world, where temperatures plunge below absolute zero. Her breath creates diamonds, and her tears become glaciers.",
             ability: "Permafrost Shield — encases herself in unbreakable enchanted ice"),
 
-    Unicorn(name: "Blaze", title: "The Inferno", color: .orange,
+    Unicorn(id: "blaze", name: "Blaze", title: "The Inferno", color: .orange,
             element: .fire, rarity: .rare,
             stats: UnicornStats(power: 0.95, speed: 0.9, magic: 0.6, defense: 0.4),
             lore: "Blaze emerged from the heart of an active volcano, her mane perpetually aflame. She races across deserts so fast the sand turns to glass beneath her hooves.",
             ability: "Solar Charge — ignites into living flame and charges at impossible speeds"),
 
-    Unicorn(name: "Twilight", title: "Forest Guardian", color: .indigo,
+    Unicorn(id: "twilight", name: "Twilight", title: "Forest Guardian", color: .indigo,
             element: .shadow, rarity: .epic,
             stats: UnicornStats(power: 0.75, speed: 0.65, magic: 0.9, defense: 0.85),
             lore: "The enchanted forest breathes because Twilight wills it. She walks between the seen and unseen worlds, her horn glowing faintly with ancient shadow magic.",
             ability: "Veil Walk — steps between dimensions, becoming untouchable"),
 
-    Unicorn(name: "Fern", title: "Life Weaver", color: .green,
+    Unicorn(id: "fern", name: "Fern", title: "Life Weaver", color: .green,
             element: .nature, rarity: .common,
             stats: UnicornStats(power: 0.4, speed: 0.5, magic: 0.7, defense: 0.6),
             lore: "Wherever Fern walks, flowers bloom and trees grow tall. She is the youngest of the unicorns but carries the oldest magic — the power of growth itself.",
             ability: "Bloom Step — causes an explosion of plant growth in a wide radius"),
 
-    Unicorn(name: "Ember", title: "Volcanic Heart", color: .red,
+    Unicorn(id: "ember", name: "Ember", title: "Volcanic Heart", color: .red,
             element: .fire, rarity: .rare,
             stats: UnicornStats(power: 0.85, speed: 0.7, magic: 0.65, defense: 0.55),
             lore: "Ember sleeps inside dormant volcanoes, keeping their fire alive. When she wakes, the earth trembles. Her horn glows like molten lava.",
             ability: "Magma Stomp — strikes the ground to create eruptions of liquid fire"),
 
-    Unicorn(name: "Glacier", title: "The Ancient", color: .white,
+    Unicorn(id: "glacier", name: "Glacier", title: "The Ancient", color: .white,
             element: .ice, rarity: .rare,
             stats: UnicornStats(power: 0.65, speed: 0.4, magic: 0.75, defense: 1.0),
             lore: "Glacier has existed since the last ice age. Slow and deliberate, she carries the patience of millennia. Nothing can pierce her frozen armor.",
             ability: "Eternal Frost — creates an impenetrable wall of ancient ice"),
 
-    Unicorn(name: "Nova", title: "Star Forger", color: .yellow,
+    Unicorn(id: "nova", name: "Nova", title: "Star Forger", color: .yellow,
             element: .light, rarity: .legendary,
             stats: UnicornStats(power: 1.0, speed: 0.8, magic: 0.9, defense: 0.7),
             lore: "Nova is said to have created the first star. Her power is unmatched — a single strike from her horn releases the energy of a supernova. She appears only in times of greatest need.",
             ability: "Supernova Strike — concentrates a star's worth of energy into a single devastating blow"),
 
-    Unicorn(name: "Shade", title: "The Unseen", color: .gray,
+    Unicorn(id: "shade", name: "Shade", title: "The Unseen", color: .gray,
             element: .shadow, rarity: .rare,
             stats: UnicornStats(power: 0.7, speed: 0.85, magic: 0.8, defense: 0.6),
             lore: "Shade exists in the spaces between shadows. Most unicorns can only sense her presence — a chill, a whisper, a flicker at the edge of vision.",
             ability: "Shadow Meld — dissolves into darkness and strikes from impossible angles"),
 
-    Unicorn(name: "Clover", title: "Fortune's Child", color: .mint,
+    Unicorn(id: "clover", name: "Clover", title: "Fortune's Child", color: .mint,
             element: .nature, rarity: .common,
             stats: UnicornStats(power: 0.35, speed: 0.6, magic: 0.55, defense: 0.5),
             lore: "Clover brings good luck wherever she goes. Crops flourish, rain falls at the right time, and lost things are found. She's small but beloved by all.",
@@ -170,7 +174,7 @@ let allUnicorns: [Unicorn] = [
 
 @Observable
 class FavoritesManager {
-    var favoriteIDs: Set<UUID> = []
+    var favoriteIDs: Set<String> = []
 
     func toggle(_ unicorn: Unicorn) {
         if favoriteIDs.contains(unicorn.id) {
@@ -189,6 +193,9 @@ class FavoritesManager {
 
 struct ContentView: View {
     @State private var favorites = FavoritesManager()
+    @State private var locationManager = LocationManager()
+    @State private var spawnManager = SpawnManager()
+    @State private var catchStorage = CatchStorageManager()
     @State private var selectedTab = 0
 
     var body: some View {
@@ -205,14 +212,23 @@ struct ContentView: View {
                 }
                 .tag(1)
 
+            ExploreMapView()
+                .tabItem {
+                    Label("Explore", systemImage: "map.fill")
+                }
+                .tag(2)
+
             CompendiumView()
                 .tabItem {
                     Label("Compendium", systemImage: "book.fill")
                 }
-                .tag(2)
+                .tag(3)
         }
         .tint(.purple)
         .environment(favorites)
+        .environment(locationManager)
+        .environment(spawnManager)
+        .environment(catchStorage)
     }
 }
 
@@ -777,6 +793,7 @@ struct FavoritesView: View {
 // MARK: - Compendium View
 
 struct CompendiumView: View {
+    @Environment(CatchStorageManager.self) private var catchStorage
     @State private var sortByRarity = true
 
     var sortedUnicorns: [Unicorn] {
@@ -789,6 +806,41 @@ struct CompendiumView: View {
     var body: some View {
         NavigationStack {
             List {
+                // Collection progress
+                Section {
+                    HStack(spacing: 8) {
+                        Image(systemName: "checkmark.circle.fill")
+                            .foregroundStyle(.green)
+                        Text("\(catchStorage.uniqueCaughtCount)/\(allUnicorns.count) Discovered")
+                            .font(.subheadline.weight(.semibold))
+                        Spacer()
+                        if catchStorage.totalCaughtCount > 0 {
+                            Text("\(catchStorage.totalCaughtCount) total catches")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        }
+                    }
+                    .padding(.vertical, 4)
+
+                    // Progress bar
+                    GeometryReader { geo in
+                        ZStack(alignment: .leading) {
+                            Capsule()
+                                .fill(.purple.opacity(0.15))
+                            Capsule()
+                                .fill(
+                                    LinearGradient(
+                                        colors: [.purple, .pink],
+                                        startPoint: .leading, endPoint: .trailing
+                                    )
+                                )
+                                .frame(width: geo.size.width * CGFloat(catchStorage.uniqueCaughtCount) / CGFloat(allUnicorns.count))
+                        }
+                    }
+                    .frame(height: 8)
+                    .listRowBackground(Color.clear)
+                }
+
                 Section {
                     HStack(spacing: 20) {
                         CompendiumStat(value: "\(allUnicorns.count)", label: "Total", icon: "number", color: .purple)
@@ -804,15 +856,17 @@ struct CompendiumView: View {
                         HStack(spacing: 14) {
                             ZStack {
                                 Circle()
-                                    .fill(unicorn.color.opacity(0.15))
+                                    .fill(unicorn.color.opacity(catchStorage.hasCaught(unicorn.id) ? 0.15 : 0.05))
                                     .frame(width: 44, height: 44)
                                 Text("🦄")
                                     .font(.title2)
+                                    .opacity(catchStorage.hasCaught(unicorn.id) ? 1.0 : 0.3)
                             }
 
                             VStack(alignment: .leading, spacing: 3) {
                                 Text(unicorn.name)
                                     .font(.subheadline.weight(.semibold))
+                                    .foregroundStyle(catchStorage.hasCaught(unicorn.id) ? .primary : .secondary)
                                 Text(unicorn.title)
                                     .font(.caption)
                                     .foregroundStyle(.secondary)
@@ -828,13 +882,27 @@ struct CompendiumView: View {
                                             .foregroundStyle(unicorn.rarity.color)
                                     }
                                 }
-                                HStack(spacing: 3) {
-                                    Image(systemName: unicorn.element.icon)
-                                        .font(.system(size: 9))
-                                    Text(unicorn.element.rawValue)
-                                        .font(.system(size: 10))
+                                if catchStorage.hasCaught(unicorn.id) {
+                                    let count = catchStorage.catchCount(for: unicorn.id)
+                                    HStack(spacing: 3) {
+                                        Image(systemName: "checkmark.circle.fill")
+                                            .font(.system(size: 9))
+                                            .foregroundStyle(.green)
+                                        if count > 1 {
+                                            Text("×\(count)")
+                                                .font(.system(size: 10, weight: .medium).monospacedDigit())
+                                                .foregroundStyle(.secondary)
+                                        }
+                                    }
+                                } else {
+                                    HStack(spacing: 3) {
+                                        Image(systemName: unicorn.element.icon)
+                                            .font(.system(size: 9))
+                                        Text(unicorn.element.rawValue)
+                                            .font(.system(size: 10))
+                                    }
+                                    .foregroundStyle(.secondary)
                                 }
-                                .foregroundStyle(.secondary)
                             }
                         }
                         .padding(.vertical, 2)

@@ -12,6 +12,13 @@
 		UC0200000000000000000003 /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = UC0100000000000000000003 /* PushNotificationManager.swift */; };
 		UC0200000000000000000004 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = UC0100000000000000000004 /* AppDelegate.swift */; };
 		UC0200000000000000000005 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = UC0100000000000000000006 /* Assets.xcassets */; };
+		5813D8516BBFEFB18E07C0A4 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904F8C56364C9B4459A222E5 /* LocationManager.swift */; };
+		05BD6C51E482E6AE2D1B5CF1 /* CatchModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1073502758C475D0957AB3C5 /* CatchModels.swift */; };
+		B4B7200955DDC88187BBEFC7 /* CatchStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183C057141AF0F13911F7C9C /* CatchStorageManager.swift */; };
+		A077338EA029C570953DE582 /* SpawnManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B36D7CCF880B6149E1FB47A /* SpawnManager.swift */; };
+		0E4A23D8A0A662CBE183B3AF /* CatchEncounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796F4407DE368B65C6566CF0 /* CatchEncounterView.swift */; };
+		49260031B4694A25ED664111 /* CatchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1353288D845022F1A3DF09F /* CatchResultView.swift */; };
+		C630593522704C6769137160 /* ExploreMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A96DB1A105CD4BCCD68950 /* ExploreMapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +29,13 @@
 		UC0100000000000000000005 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		UC0100000000000000000006 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		UC0400000000000000000001 /* Unicorns.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Unicorns.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		904F8C56364C9B4459A222E5 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		1073502758C475D0957AB3C5 /* CatchModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatchModels.swift; sourceTree = "<group>"; };
+		183C057141AF0F13911F7C9C /* CatchStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatchStorageManager.swift; sourceTree = "<group>"; };
+		3B36D7CCF880B6149E1FB47A /* SpawnManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpawnManager.swift; sourceTree = "<group>"; };
+		796F4407DE368B65C6566CF0 /* CatchEncounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatchEncounterView.swift; sourceTree = "<group>"; };
+		A1353288D845022F1A3DF09F /* CatchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatchResultView.swift; sourceTree = "<group>"; };
+		D8A96DB1A105CD4BCCD68950 /* ExploreMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreMapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +60,10 @@
 		UC0300000000000000000002 /* Unicorns */ = {
 			isa = PBXGroup;
 			children = (
+				E87C22E05B457118AAE5150E /* Catch */,
+				082E58829783612ED74B3828 /* Services */,
+				D629959A62213B861527D538 /* Models */,
+				A775A60BE6AF6BA9B9CA5437 /* Location */,
 				UC0300000000000000000003 /* App */,
 				UC0100000000000000000002 /* ContentView.swift */,
 				UC0300000000000000000004 /* Core */,
@@ -94,6 +112,41 @@
 				UC0400000000000000000001 /* Unicorns.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		A775A60BE6AF6BA9B9CA5437 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				904F8C56364C9B4459A222E5 /* LocationManager.swift */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
+		D629959A62213B861527D538 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1073502758C475D0957AB3C5 /* CatchModels.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		082E58829783612ED74B3828 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				3B36D7CCF880B6149E1FB47A /* SpawnManager.swift */,
+				183C057141AF0F13911F7C9C /* CatchStorageManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		E87C22E05B457118AAE5150E /* Catch */ = {
+			isa = PBXGroup;
+			children = (
+				D8A96DB1A105CD4BCCD68950 /* ExploreMapView.swift */,
+				A1353288D845022F1A3DF09F /* CatchResultView.swift */,
+				796F4407DE368B65C6566CF0 /* CatchEncounterView.swift */,
+			);
+			path = Catch;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,6 +218,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C630593522704C6769137160 /* ExploreMapView.swift in Sources */,
+				49260031B4694A25ED664111 /* CatchResultView.swift in Sources */,
+				0E4A23D8A0A662CBE183B3AF /* CatchEncounterView.swift in Sources */,
+				A077338EA029C570953DE582 /* SpawnManager.swift in Sources */,
+				B4B7200955DDC88187BBEFC7 /* CatchStorageManager.swift in Sources */,
+				05BD6C51E482E6AE2D1B5CF1 /* CatchModels.swift in Sources */,
+				5813D8516BBFEFB18E07C0A4 /* LocationManager.swift in Sources */,
 				UC0200000000000000000001 /* UnicornsApp.swift in Sources */,
 				UC0200000000000000000002 /* ContentView.swift in Sources */,
 				UC0200000000000000000003 /* PushNotificationManager.swift in Sources */,
