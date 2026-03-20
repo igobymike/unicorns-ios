@@ -90,7 +90,8 @@ final class PushNotificationManager: NSObject, UNUserNotificationCenterDelegate 
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody    = try? JSONEncoder().encode(["token": token])
+        let bundleId = Bundle.main.bundleIdentifier ?? ""
+        request.httpBody    = try? JSONEncoder().encode(["token": token, "bundle_id": bundleId])
         request.timeoutInterval = 10
 
         URLSession.shared.dataTask(with: request) { _, response, error in
