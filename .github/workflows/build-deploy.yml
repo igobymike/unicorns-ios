@@ -30,6 +30,7 @@ name: Build & Deploy
 # ---- EDIT THESE for your app ----
 env:
   APP_NAME: Unicorns                    # Must match config.json app.name
+  BUNDLE_ID: com.baiteks.Unicorns      # Bundle identifier for OTA manifest
   XCODE_PROJECT: Unicorns.xcodeproj    # Your .xcodeproj path
   XCODE_SCHEME: Unicorns               # Your Xcode scheme name
   APP_DIR: Unicorns                     # Directory containing your .xcodeproj
@@ -232,7 +233,8 @@ jobs:
               "artifact": "${{ needs.build.outputs.artifact_name }}",
               "run_id": "${{ github.run_id }}",
               "repo": "${{ github.repository }}",
-              "app_name": "'"$APP_NAME"'"
+              "app_name": "'"$APP_NAME"'",
+              "bundle_id": "'"$BUNDLE_ID"'"
             }')
 
           STATUS=$(echo "$RESPONSE" | grep "HTTP_STATUS:" | cut -d: -f2)
