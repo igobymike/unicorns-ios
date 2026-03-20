@@ -26,6 +26,8 @@ struct ExploreMapView: View {
                         spawn: spawn,
                         userLocation: locationManager.location?.coordinate
                     )
+                    .environment(spawnManager)
+                    .environment(catchStorage)
                 }
             }
             .onAppear {
