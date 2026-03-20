@@ -60,10 +60,9 @@
 		UC0300000000000000000002 /* Unicorns */ = {
 			isa = PBXGroup;
 			children = (
-				E87C22E05B457118AAE5150E /* Catch */,
+				F1E2D3C4B5A697880BFACE01 /* Views */,
 				082E58829783612ED74B3828 /* Services */,
 				D629959A62213B861527D538 /* Models */,
-				A775A60BE6AF6BA9B9CA5437 /* Location */,
 				UC0300000000000000000003 /* App */,
 				UC0100000000000000000002 /* ContentView.swift */,
 				UC0300000000000000000004 /* Core */,
@@ -83,6 +82,7 @@
 		UC0300000000000000000004 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				A775A60BE6AF6BA9B9CA5437 /* Location */,
 				UC0300000000000000000005 /* Notifications */,
 			);
 			path = Core;
@@ -147,6 +147,14 @@
 				796F4407DE368B65C6566CF0 /* CatchEncounterView.swift */,
 			);
 			path = Catch;
+			sourceTree = "<group>";
+		};
+		F1E2D3C4B5A697880BFACE01 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E87C22E05B457118AAE5150E /* Catch */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
